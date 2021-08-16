@@ -17,8 +17,9 @@
 12. Ability to migrate Server parameters which were changed from default
 13. Ability to validate the migrate the Database basic and creating validation report
 14. Ability to select databases which you would like to migrate 
-15. Ability to select the phase of migration 1) Validation (Yes\No) 2)Firewall Migration (Yes\No) 3)Server Parameter (Yes\No)
+15. Ability to select the phase of migration 1) Validation (Yes\No) 2)Firewall Migration (Yes\No) 3)Server Parameter (Yes\No) 4)User Migration
 16. Dynamic SSL switch to make it work in both old and new versions of MySQL client. 
+17. Ability to decide the state of the source database during and post migration (Read_only or Read_write)
 
 
 ## How to Use the script azuremysqlmigrate.sh
