@@ -26,6 +26,12 @@ export MY_PARAMETERFILE="migrateparameter.json" #Name of the paramater file
 else
 MY_PARAMETERFILE=$1
 fi 
+
+if ! [[ -f "$MY_PARAMETERFILE" ]]; then
+    echo "Parameter file does not exist $MY_PARAMETERFILE exists."
+	exit 1
+fi
+
 #########For Logging################################
 NOW=$(date +"%m%d%Y%H%M%S")
 export MY_LOGFILE="migration"$NOW".log"
