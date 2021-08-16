@@ -7,5 +7,5 @@
 * Make the script Executable : **chmod +x azuremysqlmigfinal.sh**
 * Edit the Parameter file and provide the migration details 
 * Edit the *migrateparameter.json*  (Or create a paramater file with this template)
-* Run the scripts :**./azuremysqlmigfinal.sh <Parameterfilename>
+* Run the scripts : **./azuremysqlmigfinal.sh** *Parameterfilename*
 > If you dont specify the parameter file name it will check the default file migrateparameter.json is same folder
