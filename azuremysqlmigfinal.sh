@@ -491,7 +491,7 @@ echo "The Following databases will be migrated  are $SOURCE_DATABASE_NAME "
 # Create a dump file of the source db
 export MYSQL_PWD=$MY_SOURCEUSERPWD
 echo $(date) : "Dumping Databases to file...... " >>$MY_LOGFILE
-mysqldump $sslswitch -Fc --log-error=$MY_MYSQLDUMPLOG --host="$MY_SOURCEDBSERVER.mysql.database.azure.com" --user="$MY_SOURCEUSER" --databases $SOURCE_DATABASE_NAME >$MY_SOURCEDBSERVER"_backup.sql" 
+mysqldump $sslswitch -Fc --routines --log-error=$MY_MYSQLDUMPLOG --host="$MY_SOURCEDBSERVER.mysql.database.azure.com" --user="$MY_SOURCEUSER" --databases $SOURCE_DATABASE_NAME >$MY_SOURCEDBSERVER"_backup.sql" 
 # check that filesize of dump file is greater than 0
 if ! [ -s $MY_SOURCEDBSERVER"_backup.sql" ]; then
   echo 'Error during mysqldump...' >>$MY_LOGFILE
