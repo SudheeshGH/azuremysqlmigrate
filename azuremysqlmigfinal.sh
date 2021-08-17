@@ -42,7 +42,7 @@ echo $(date) : "Migration scenario $MY_MYSCENARIO starting" >$MY_LOGFILE
 echo "Migration scenario $MY_MYSCENARIO starting ..Log File :$MY_LOGFILE " 
 echo $(date) : "Checking Pre-requisites  Azure CLI ,MySQL client mysqldump are there.." >>$MY_LOGFILE
 echo "Checking Pre-requisites  Azure CLI ,MySQL client, mysqldump and jq are there.." 
-echo  "The Parameter file used is $MY_PARAMETERFILE" 
+echo  -e "\e[1;35mThe Parameter file used is $MY_PARAMETERFILE\e[0m" 
 echo $(date) : "The Parameter file used is $MY_PARAMETERFILE:"  >>$MY_LOGFILE
 
 #############################Pre-req Check#########################################
@@ -153,68 +153,68 @@ echo "Default Password for migrated users  :" $MY_MYSQLDEFAULTPWD
 #####################################Flow-Selection#####################
  if [ "$MY_MYDBSELECTION" = "ALL" ]
 then 
-echo "You have selected to migrate all databases in the server $MY_SOURCEDBSERVER"
+echo -e "\e[1;33m You have selected to migrate all databases in the server $MY_SOURCEDBSERVER \e[0m"
 echo "You have selected to migrate all databases in the server $MY_SOURCEDBSERVER" >>$MY_LOGFILE
 else 
-echo "You have selected to migrate the following databases  $MY_MYDBSELECTION in server $MY_SOURCEDBSERVER"
+echo -e "\e[1;36mYou have selected to migrate the following databases  $MY_MYDBSELECTION in server $MY_SOURCEDBSERVER \e[0m"
 echo "You have selected to migrate the following databases  $MY_MYDBSELECTION in server $MY_SOURCEDBSERVER" >>$MY_LOGFILE
 fi
 
  if [ "$MY_MYSELECTIONVALIDATE" = "NO" ]
 then 
-echo "Validation report will be generated" 
+echo "\e[1;33mValidation report will be generated \e[0m" 
 echo "Validation report will be generated" >>$MY_LOGFILE
 else 
-echo "Validation report will be skipped"
+echo "\e[1;36mValidation report will be skipped \e[0m"
 echo "Validation report will be skipped" >>$MY_LOGFILE
 fi
 
 if [ "$MY_MYSELECTIONFIREWALLRULE" = "NO" ]
 then 
 echo "Firewall rule will be migrated"  >>$MY_LOGFILE
-echo "Firewall rule will be migrated"
+echo "\e[1;33mFirewall rule will be migrated \e[0m"
 else 
-echo "Firewall rule migration will be skipped" >>$MY_LOGFILE
-echo "Firewall rule migration will be skipped"
+echo "Firewall rule migration will be skipped " >>$MY_LOGFILE
+echo "\e[1;36mFirewall rule migration will be skipped \e[0m"
 fi
 
 if [ "$MY_MYSELECTIONSERVERPARAMETER" = "NO" ]
 then 
 echo "Changed Server Parameter  will be migrated" >>$MY_LOGFILE
-echo "Changed Server Parameter  will be migrated"
+echo "\e[1;33mChanged Server Parameter  will be migrated \e[0m"
 else 
-echo "Server Parameter migration will be skipped" >>$MY_LOGFILE
-echo "Server Parameter migration will be skipped"
+echo "Server Parameter migration will be skipped " >>$MY_LOGFILE
+echo ""\e[1;36m Server Parameter migration will be skipped\e[0m"
 fi
 
 
 if [ "$MY_MYSELECTIONUSER" = "NO" ]
 then 
 echo "USER migration will be performed to default password "  >>$MY_LOGFILE
-echo "USER migration will be performed to default password"
+echo "\e[1;33m USER migration will be performed to default password \e[0m"
 else 
 echo "USER migration will be skipped" >>$MY_LOGFILE
-echo "USER migration will be skipped"
+echo "\e[1;36m USER migration will be skipped \e[0m"
 fi
 
 
 if [ "$MY_MYSELECTIONROSTART" = "NO" ]
 then 
 echo "The source server will be set to Read-only while migrating"  >>$MY_LOGFILE
-echo "The source server will be set to Read-only while migrating"
+echo "\e[1;33m The source server will be set to Read-only while migrating \e[0m"
 else 
 echo "The source server will be in Read-write mode while migrating" >>$MY_LOGFILE
-echo "The source server will be in Read-write mode while migrating"
+echo "\e[1;36m The source server will be in Read-write mode while migrating\e[0m"
 fi
 
 
 if [ "$MY_MYSELECTIONROAFTER" = "NO" ]
 then 
 echo "The source server will be set to Read-Write after migrating"  >>$MY_LOGFILE
-echo "The source server will be set to Read-Write after migrating"
+echo "\e[1;33m The source server will be set to Read-Write after migrating \e[0m"
 else 
 echo "The source server will be in Read-Only for Cutover post migrating" >>$MY_LOGFILE
-echo "The source server will be in Read-Only for Cutover post migrating"
+echo "\e[1;36m The source server will be in Read-Only for Cutover post migrating \e[0m"
 fi
 
 
