@@ -642,7 +642,7 @@ then
 		then
 		echo "----------Table Count Validated successfully for $db----------" >>$MY_MYSQLVALIDATIONREPORT
 		else
-		echo "Error: Migration Issue detected on tables in $db please validate manually" >>$MY_MYSQLVALIDATIONREPORT
+		echo "Error: Migration Issue detected on tables in $db please validate running SELECT Count(*)  FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '$db'" >>$MY_MYSQLVALIDATIONREPORT
 		fi
 		# Validating Views
 		echo "Validating the no of Views in Database $db" >>$MY_MYSQLVALIDATIONREPORT
@@ -657,7 +657,7 @@ then
 		then
 		echo "----------View Count Validated successfully  for $db-----------" >>$MY_MYSQLVALIDATIONREPORT
 		else
-		echo "Error: Migration Issue detected on Views in $db please validate manually" >>$MY_MYSQLVALIDATIONREPORT
+		echo "Error: Migration Issue detected on Views in $db please validate running SELECT Count(*)  FROM INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA = '$db';" >>$MY_MYSQLVALIDATIONREPORT
 		fi
 		# Validating Triggers
 		echo "Validating the no of Triggers in Database $db" >>$MY_MYSQLVALIDATIONREPORT
@@ -672,7 +672,7 @@ then
 		then
 		echo "-------Trigger Count Validated successfully  for $db----------" >>$MY_MYSQLVALIDATIONREPORT
 		else
-		echo "Error: Migration Issue detected on Triggers in $db please validate manually" >>$MY_MYSQLVALIDATIONREPORT
+		echo "Error: Migration Issue detected on Triggers in $db please validate running SELECT Count(*)  FROM INFORMATION_SCHEMA.TRIGGERS WHERE TRIGGER_SCHEMA = '$db';" >>$MY_MYSQLVALIDATIONREPORT
 		fi
 		# Validating Routines -- Functions and Procedures 
 		echo "Validating the no of Routines -- Functions and Procedures in Database $db" >>$MY_MYSQLVALIDATIONREPORT
@@ -687,7 +687,7 @@ then
 		then
 		echo "-------Routines Count Validated successfully  for $db-------" >>$MY_MYSQLVALIDATIONREPORT
 		else
-		echo "Error: Migration Issue detected on routines in $db please validate manually" >>$MY_MYSQLVALIDATIONREPORT
+		echo "Error: Migration Issue detected on routines in $db please validate running SELECT Count(*)  FROM INFORMATION_SCHEMA.routines WHERE routine_SCHEMA = '$db';" >>$MY_MYSQLVALIDATIONREPORT
 		fi
 		#Validating Constraints 
 			echo "Validating the no of Constraints in Database $db" >>$MY_MYSQLVALIDATIONREPORT
@@ -702,7 +702,7 @@ then
 			then
 			echo "--------Constraints Count Validated successfully  for $db--------" >>$MY_MYSQLVALIDATIONREPORT
 			else
-			echo "Error:Migration Issue detected on Constraints in $db please validate manually" >>$MY_MYSQLVALIDATIONREPORT
+			echo "Error:Migration Issue detected on Constraints in $db please validate running SELECT Count(*)  FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = '$db';" >>$MY_MYSQLVALIDATIONREPORT
 			fi
 		#validating Rows per table for each database 
 			errflg="TRUE"
@@ -720,7 +720,7 @@ then
 			fi
 		rm $MY_SOURCEDBSERVER"_table.sql"
 		rm $MY_TARGETDBSERVER"_table.sql"
-		
+		echo "******************************************************************************************">>$MY_MYSQLVALIDATIONREPORT
 	fi
 	done
 
