@@ -667,7 +667,7 @@ then
 		tdbvalue=$( mysql -N $sslswitch --host="$MY_TARGETDBSERVER.mysql.database.azure.com" --user="$MY_TARGETUSER"  -e "SELECT Count(*)  FROM INFORMATION_SCHEMA.TRIGGERS WHERE TRIGGER_SCHEMA = '$db';  ")
 		echo "No of Triggers in $MY_SOURCEDBSERVER for $db is $sdbvalue " >>$MY_MYSQLVALIDATIONREPORT
 		trtbldata[$arrcount]="$db${tab}|$sdbvalue${tab}|$tdbvalue${tab}"
-		echo "No of Tables in $MY_TARGETDBSERVER for $db is $tdbvalue " >>$MY_MYSQLVALIDATIONREPORT
+		echo "No of Triggers in $MY_TARGETDBSERVER for $db is $tdbvalue " >>$MY_MYSQLVALIDATIONREPORT
 		if [ "$sdbvalue" == "$tdbvalue" ]
 		then
 		echo "-------Trigger Count Validated successfully  for $db----------" >>$MY_MYSQLVALIDATIONREPORT
@@ -695,7 +695,7 @@ then
 			sdbvalue=$( mysql -N $sslswitch --host="$MY_SOURCEDBSERVER.mysql.database.azure.com" --user="$MY_SOURCEUSER"  -e "SELECT Count(*)  FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = '$db';  ")
 			export MYSQL_PWD=$MY_TARGETUSERPWD
 			tdbvalue=$( mysql -N $sslswitch --host="$MY_TARGETDBSERVER.mysql.database.azure.com" --user="$MY_TARGETUSER"  -e "SELECT Count(*)  FROM INFORMATION_SCHEMA.table_constraints WHERE constraint_schema = '$db';  ")
-			echo "No of Triggers in $MY_SOURCEDBSERVER for $db is $sdbvalue " >>$MY_MYSQLVALIDATIONREPORT
+			echo "No of Constraints in $MY_SOURCEDBSERVER for $db is $sdbvalue " >>$MY_MYSQLVALIDATIONREPORT
 			cotbldata[$arrcount]="$db${tab}|$sdbvalue${tab}|$tdbvalue${tab}"
 			echo "No of Constraints in $MY_TARGETDBSERVER for $db is $tdbvalue " >>$MY_MYSQLVALIDATIONREPORT
 			if [ "$sdbvalue" == "$tdbvalue" ]
@@ -704,7 +704,7 @@ then
 			else
 			echo "Error:Migration Issue detected on Constraints in $db please validate manually" >>$MY_MYSQLVALIDATIONREPORT
 			fi
-			#validating Rows per table for each database 
+		#validating Rows per table for each database 
 			errflg="TRUE"
 			echo "Validating the no of total number of rows in tables in Database $db" >>$MY_MYSQLVALIDATIONREPORT
 
@@ -715,7 +715,7 @@ then
 			if cmp -s $MY_SOURCEDBSERVER"_table.sql" $MY_TARGETDBSERVER"_table.sql"; then
 			echo "--------Validated Rows per Database table successfully  for $db--------" >>$MY_MYSQLVALIDATIONREPORT
 			else
-			echo "Error:Migration Issue detected on Table in $db please verify the rows validate manually" >>$MY_MYSQLVALIDATIONREPORT
+			echo "Error:Migration Issue detected on Table in $db please verify the rows running command : SELECT table_name, table_rows FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA ='$db';" >>$MY_MYSQLVALIDATIONREPORT
 			errflg="FALSE"
 			fi
 		rm $MY_SOURCEDBSERVER"_table.sql"
