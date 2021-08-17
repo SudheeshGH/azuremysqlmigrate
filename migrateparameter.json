@@ -39,7 +39,7 @@
       "value": "<Default Password>"
     },
 	"MY_MYDBSELECTION": {
-      "__comment": "By Default the ALL means all databases but if you need specific specify value as :db1 db2 db3 -->to migrate db1,db2 and db3",
+      "__comment": "By Default the ALL(Case Sensitive) means all databases but if you need specific specify value as :db1 db2 db3 -->to migrate db1,db2 and db3",
       "value": "ALL"
     },
     "MY_MYSELECTIONVALIDATE": {
