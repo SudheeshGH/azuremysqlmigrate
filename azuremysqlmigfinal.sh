@@ -495,7 +495,7 @@ mysqldump $sslswitch -Fc --log-error=$MY_MYSQLDUMPLOG --host="$MY_SOURCEDBSERVER
 # check that filesize of dump file is greater than 0
 if ! [ -s $MY_SOURCEDBSERVER"_backup.sql" ]; then
   echo 'Error during mysqldump...' >>$MY_LOGFILE
-  echo $(date) : "For more details refer to $MY_MYSQLDUMPLOG file...... " >>$MY_LOGFILE
+  echo $(date) : "For Errors refer to $MY_MYSQLDUMPLOG file...... " >>$MY_LOGFILE
   exit 1
 fi
 echo $(date) : "For more details refer to $MY_MYSQLDUMPLOG file...... " >>$MY_LOGFILE
