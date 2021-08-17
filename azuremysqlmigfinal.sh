@@ -153,68 +153,68 @@ echo "Default Password for migrated users  :" $MY_MYSQLDEFAULTPWD
 #####################################Flow-Selection#####################
  if [ "$MY_MYDBSELECTION" = "ALL" ]
 then 
-echo -e "\e[1;33m You have selected to migrate all databases in the server $MY_SOURCEDBSERVER \e[0m"
+echo -e "\e[1;36m You have selected to migrate all databases in the server $MY_SOURCEDBSERVER \e[0m"
 echo "You have selected to migrate all databases in the server $MY_SOURCEDBSERVER" >>$MY_LOGFILE
 else 
-echo -e "\e[1;36mYou have selected to migrate the following databases  $MY_MYDBSELECTION in server $MY_SOURCEDBSERVER \e[0m"
+echo -e "\e[1;33mYou have selected to migrate the following databases  $MY_MYDBSELECTION in server $MY_SOURCEDBSERVER \e[0m"
 echo "You have selected to migrate the following databases  $MY_MYDBSELECTION in server $MY_SOURCEDBSERVER" >>$MY_LOGFILE
 fi
 
  if [ "$MY_MYSELECTIONVALIDATE" = "NO" ]
 then 
-echo -e "\e[1;33m Validation report will be generated \e[0m" 
+echo -e "\e[1;36m Validation report will be generated \e[0m" 
 echo "Validation report will be generated" >>$MY_LOGFILE
 else 
-echo -e  "\e[1;36m Validation report will be skipped \e[0m"
+echo -e  "\e[1;33m Validation report will be skipped \e[0m"
 echo "Validation report will be skipped" >>$MY_LOGFILE
 fi
 
 if [ "$MY_MYSELECTIONFIREWALLRULE" = "NO" ]
 then 
 echo "Firewall rule will be migrated"  >>$MY_LOGFILE
-echo -e "\e[1;33m Firewall rule will be migrated \e[0m"
+echo -e "\e[1;36m Firewall rule will be migrated \e[0m"
 else 
 echo "Firewall rule migration will be skipped " >>$MY_LOGFILE
-echo -e "\e[1;36m Firewall rule migration will be skipped \e[0m"
+echo -e "\e[1;33m Firewall rule migration will be skipped \e[0m"
 fi
 
 if [ "$MY_MYSELECTIONSERVERPARAMETER" = "NO" ]
 then 
 echo "Changed Server Parameter  will be migrated" >>$MY_LOGFILE
-echo -e  "\e[1;33m Changed Server Parameter  will be migrated \e[0m"
+echo -e  "\e[1;36m Changed Server Parameter  will be migrated \e[0m"
 else 
 echo "Server Parameter migration will be skipped " >>$MY_LOGFILE
-echo -e "\e[1;36m Server Parameter migration will be skipped\e[0m"
+echo -e "\e[1;33m Server Parameter migration will be skipped\e[0m"
 fi
 
 
 if [ "$MY_MYSELECTIONUSER" = "NO" ]
 then 
 echo "USER migration will be performed to default password "  >>$MY_LOGFILE
-echo -e "\e[1;33m USER migration will be performed to default password \e[0m"
+echo -e "\e[1;36m USER migration will be performed to default password \e[0m"
 else 
 echo "USER migration will be skipped" >>$MY_LOGFILE
-echo -e "\e[1;36m USER migration will be skipped \e[0m"
+echo -e "\e[1;33m USER migration will be skipped \e[0m"
 fi
 
 
 if [ "$MY_MYSELECTIONROSTART" = "NO" ]
 then 
 echo "The source server will be set to Read-only while migrating"  >>$MY_LOGFILE
-echo -e "\e[1;33m The source server will be set to Read-only while migrating \e[0m"
+echo -e "\e[1;36m The source server will be set to Read-only while migrating \e[0m"
 else 
 echo "The source server will be in Read-write mode while migrating" >>$MY_LOGFILE
-echo -e "\e[1;36m The source server will be in Read-write mode while migrating\e[0m"
+echo -e "\e[1;33m The source server will be in Read-write mode while migrating\e[0m"
 fi
 
 
 if [ "$MY_MYSELECTIONROAFTER" = "NO" ]
 then 
 echo "The source server will be set to Read-Write after migrating"  >>$MY_LOGFILE
-echo -e "\e[1;33m The source server will be set to Read-Write after migrating \e[0m"
+echo -e "\e[1;36m The source server will be set to Read-Write after migrating \e[0m"
 else 
 echo "The source server will be in Read-Only for Cutover post migrating" >>$MY_LOGFILE
-echo -e "\e[1;36m The source server will be in Read-Only for Cutover post migrating \e[0m"
+echo -e "\e[1;33m The source server will be in Read-Only for Cutover post migrating \e[0m"
 fi
 
 
